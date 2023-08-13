@@ -8,6 +8,10 @@ YSQL 192.168.66.80        127.0.0.1:50736      yugabyte   active       26.853 se
 YCQL 192.168.66.80        127.0.0.1:35518      cr         QUERY         0.235 select avg(permit), avg(permit_recheck), avg( handgun), avg( long_gun), avg( other), avg( multiple), avg( admin), avg( prepawn_handgun), avg( prepawn_long_gun), avg( prepawn_other), avg( redemption_handgun), avg( redemption_long_gun), avg( redemption_other), avg( returned_handgun), avg( returned_long_gun), avg( returned_other), avg( rentals_handgun), avg( rentals_long_gun), avg( private_sale_handgun), avg( private_sale_long_gun), avg( private_sale_other), avg( return_to_seller_handgun), avg( return_to_seller_long_gun), avg( return_to_seller_other), avg( totals) from fa_bg_checks;
 ```
 
+Currently, the query text is not limited, and thus will flow over to the next line. For now, this is a deliberate choice to make sure the full query is shown.
+
+Just like the top utility, it shows the 'top' active statements, and refreshes the screen at an interval of 3 seconds, which can be changed. If you want to preserve the output, or quite the utility, press CTRL-c. Inactive sessions are not shown, because there is not enough information to consistently have enough information to know which sessions were most recent inactive, and thus show these in that way.
+
 # Commandline switches
 ```
 USAGE:
@@ -19,8 +23,9 @@ FLAGS:
 
 OPTIONS:
     -h, --hosts <hosts>          hostnames, comma separated [default: 192.168.66.80,192.168.66.81,192.168.66.82]
-    -i, --interval <interval>    refresh interval [default: 3]
+    -u, --update <interval>      update_interval interval [default: 3]
     -p, --ports <ports>          ports numbers, comma separated. YSQL:13000, YCQL:12000 [default: 13000,12000]
+    -i
 ```
 
 # How to install
